@@ -11,11 +11,9 @@ class Pagination extends React.Component {
     this.setState(
       prevState => {
         if (prevState.pageNo < totalPages) {
-          return {
-            pageNo: prevState.pageNo + 1,
-          }
+          return {pageNo: prevState.pageNo + 1}
         }
-        return prevState
+        return null
       },
       () => {
         const {pageNo} = this.state
@@ -29,11 +27,9 @@ class Pagination extends React.Component {
     this.setState(
       prevState => {
         if (prevState.pageNo > 1) {
-          return {
-            pageNo: prevState.pageNo - 1,
-          }
+          return {pageNo: prevState.pageNo - 1}
         }
-        return prevState
+        return null
       },
       () => {
         const {pageNo} = this.state
@@ -44,18 +40,30 @@ class Pagination extends React.Component {
 
   render() {
     const {pageNo} = this.state
+    const {totalPages} = this.props
 
     return (
-      <div className="mb-3 d-flex justify-content align-items-center">
-        <button type="button" className="control-btn" onClick={this.onPrevPage}>
+      <div className="pagination-container">
+        <button
+          type="button"
+          className="control-btn"
+          onClick={this.onPrevPage}
+          disabled={pageNo === 1}
+        >
           Prev
         </button>
         <p className="page-no">{pageNo}</p>
-        <button type="button" className="control-btn">
+        <button
+          type="button"
+          className="control-btn"
+          onClick={this.onNextPage}
+          disabled={pageNo === totalPages}
+        >
           Next
         </button>
       </div>
     )
   }
 }
+
 export default Pagination

@@ -6,6 +6,32 @@
   text-align: center;
 }
 
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
 .control-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
   margin: 15px;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.control-btn:disabled {
+  background-color: #b0b0b0;
+  cursor: not-allowed;
+}
+
+.page-no {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
 }
